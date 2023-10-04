@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "ChatGPT JavaScript Injection",
+    "version": "1.0",
+    "description": "Extends ChatGPT to allow Plugin Development for Private Use Cases",
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "permissions": ["activeTab", "storage", "scripting"],
+    "host_permissions": [
+      "http://chat.openai.com/*",
+      "https://chat.openai.com/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/button-16.png",
+        "48": "icons/button-48.png",
+        "128": "icons/button-128.png"
+      }
+    }
+  }
+  
