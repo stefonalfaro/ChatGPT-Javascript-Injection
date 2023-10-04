@@ -6,11 +6,17 @@
     "background": {
       "scripts": ["background.js"]
     },
-    "permissions": ["activeTab", "storage", "scripting"],
+    "permissions": ["activeTab", "storage", "scripting", "tabs"],
     "host_permissions": [
       "http://chat.openai.com/*",
       "https://chat.openai.com/*"
     ],
+    "content_scripts": [
+        {
+          "matches": ["http://chat.openai.com/*", "https://chat.openai.com/*"],
+          "js": ["contentScript.js"]
+        }
+    ],  
     "action": {
       "default_popup": "popup.html",
       "default_icon": {

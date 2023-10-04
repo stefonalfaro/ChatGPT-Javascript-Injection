@@ -1,7 +1,16 @@
 document.getElementById('injectionTest').addEventListener('click', () => {
-    browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
+  sendMessageToBackground('clickButton');
+});
+
+document.getElementById('textInjectionTest').addEventListener('click', () => {
+  sendMessageToBackground('textInjection');
+});
+
+function sendMessageToBackground(actionType) {
+  console.log(`Sending message: ${actionType}`);
+  browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
       let currentTab = tabs[0];
-      browser.runtime.sendMessage({ action: 'clickButton', tabId: currentTab.id });
-      console.log('Message sent to background script.');
-    });
-  });  
+      console.log(`Sending to tab ${currentTab.id}`);
+      browser.runtime.sendMessage({ action: actionType, tabId: currentTab.id });
+  });
+}
